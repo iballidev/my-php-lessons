@@ -1,0 +1,43 @@
+/* minimum media query */
+/* maximum media query */
+/* maximum and minimum query */
+/* tranform effects */
+/* transition effects */
+/* form control appearance */
+/* 'before' pseudo element style */
+/* 'after' pseudo element style */
+.toolbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.toolbar .nav-list {
+  position: fixed;
+  background-color: red;
+  right: 0;
+  left: 0;
+  top: 50px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+@media (min-width: 50em) {
+  .toolbar {
+    display: block;
+  }
+  .toolbar .nav-list {
+    position: relative;
+    background-color: unset;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.wrap-container {
+  --max-width: 900px;
+  --padding: 1rem;
+  width: min(var(--max-width), 100% - (var(--padding) * 2));
+  margin-inline: auto;
+}
+
+/*# sourceMappingURL=main.css.map */

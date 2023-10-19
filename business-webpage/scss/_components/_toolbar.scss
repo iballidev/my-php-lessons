@@ -1,0 +1,28 @@
+@use "../_partials/mixins";
+.toolbar{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .nav-list {
+      position: fixed;
+      background-color: red;
+      right: 0;
+      left: 0;
+      top: 50px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+
+    @include mixins.minmq(50em){
+        display: block;
+        .nav-list {
+          position: relative;
+          background-color: unset;
+          padding-left: 0;
+          padding-right: 0;
+        }
+    }
+    
+}

@@ -1,0 +1,17 @@
+{
+  "name": "business-webpage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style": "sass scss/main.scss stylesheets/main.css --watch",
+    "tailwind": "npx tailwindcss -i ./tailwind/input.css -o ./tailwind/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
