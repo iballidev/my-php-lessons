@@ -1,0 +1,7 @@
+PHP Database Interaction in Five (5) Steps
+
+1. Create a connection
+2. Select a database
+3. Perform database query
+4. Use returned data (if any)
+5. Close connection

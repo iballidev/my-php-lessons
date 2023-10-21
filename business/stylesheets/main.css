@@ -35,11 +35,15 @@
   }
 }
 
-.wrap-container {
+.main-container {
   --max-width: 900px;
   --padding: 1rem;
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
+}
+
+body {
+  background-color: #e8dada;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,256 @@
+# ACCESSING MySQL IN THE COMMAND LINE INTERFACE (XAMPP server)
+https://stackoverflow.com/questions/5920136/mysql-is-not-recognised-as-an-internal-or-external-command-operable-program-or-b
+
+1. Locate "C:\xampp\mysql" folder
+
+2. Access it's path with the command line interface:
+
+        C:\xampp\mysql>
+
+3. Attempt to access mysql (it will fail):
+
+        C:\xampp\mysql>mysql -u root --password=swordfish01
+        ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+4. Access the bin file path:
+
+        C:\xampp\mysql>path
+       PATH=C:\xampp\mysql\bin
+
+5. Set the bin file path:
+        C:\xampp\mysql>set PATH=C:\xampp\mysql\bin
+
+6. Enter empty password:
+        C:\xampp\mysql>mysql -u root --password
+        Enter password:
+        NOTE: Do not enter any text for password just press enter again
+
+        
+        Welcome to the MariaDB monitor.  Commands end with ; or \g.
+        Your MariaDB connection id is 17
+        Server version: 10.4.6-MariaDB mariadb.org binary distribution
+
+        Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+        Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+        MariaDB [(none)]>
+        MariaDB [(none)]>
+
+
+
+# MySQL DATABASE
+
+1. Create a MySQL Database: 
+
+        MariaDB [(none)]> CREATE DATABASE my_test_db;        
+        Query OK, 1 row affected (0.004 sec)
+
+2. Access the database:
+        
+        MariaDB [(none)]> use my_test_db
+        Database changed
+
+3. Create a table "subjects" inside the database:
+
+        MariaDB [my_test_db]> CREATE TABLE subjects(
+            -> id int(11) NOT NULL auto_increment,
+            -> menu_name varchar(30) NOT NULL,
+            -> position int(3) NOT NULL,
+            -> visible tinyint(1) NOT NULL,
+            -> PRIMARY KEY (id)
+            -> );
+        Query OK, 0 rows affected (0.039 sec)
+
+4. Read the table data:
+        
+        MariaDB [my_test_db]> select * from subjects;
+        Empty set (0.096 sec)
+
+        NOTE: The table is currently empty because no data has been added into it.
+
+5. Insert data into the table:
+
+        MariaDB [my_test_db]> INSERT INTO subjects(menu_name, position, visible)
+            -> VALUES('About Widget Corp', 1, 1);
+        Query OK, 1 row affected (0.004 sec)
+        
+
+6. Read the table data again:
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        +----+-------------------+----------+---------+
+        1 row in set (0.001 sec)
+
+7. Insert data into the table:
+
+        MariaDB [my_test_db]> INSERT INTO subjects(menu_name, position, visible)
+            -> VALUES('Products', 2, 1);
+        Query OK, 1 row affected (0.004 sec)
+        
+
+8. Read the table data again:
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        |  2 | Products          |        2 |       1 |
+        +----+-------------------+----------+---------+
+        2 rows in set (0.001 sec)
+
+9. Insert data into the table:
+
+        MariaDB [my_test_db]> INSERT INTO subjects(menu_name, position, visible)
+            -> VALUES('Services', 3, 1);
+        Query OK, 1 row affected (0.004 sec)
+        
+
+10. Read the table data again:
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        |  2 | Products          |        2 |       1 |
+        |  2 | Services          |        3 |       1 |
+        +----+-------------------+----------+---------+
+        3 rows in set (0.001 sec)
+
+11. Insert data into the table:
+
+        MariaDB [my_test_db]> INSERT INTO subjects(menu_name, position, visible)
+            -> VALUES('Misc', 4, 0);
+        Query OK, 1 row affected (0.004 sec)
+        
+
+12. Read the table data again:
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        |  2 | Products          |        2 |       1 |
+        |  3 | Services          |        3 |       1 |
+        |  4 | Misc              |        4 |       0 |
+        +----+-------------------+----------+---------+
+        4 rows in set (0.001 sec)
+
+
+13. Complex Selection:
+    a.      MariaDB [my_test_db]> select * from subjects
+                -> WHERE visible = 1
+                -> ;
+            +----+-------------------+----------+---------+
+            | id | menu_name         | position | visible |
+            +----+-------------------+----------+---------+
+            |  1 | About Widget Corp |        1 |       1 |
+            |  2 | Products          |        2 |       1 |
+            |  3 | Services          |        3 |       1 |
+            +----+-------------------+----------+---------+
+            3 rows in set (0.001 sec)
+        
+
+    b.      MariaDB [my_test_db]> select * from subjects
+                -> WHERE visible = 0;
+            +----+-----------+----------+---------+
+            | id | menu_name | position | visible |
+            +----+-----------+----------+---------+
+            |  4 | Misc      |        4 |       0 |
+            +----+-----------+----------+---------+
+            1 row in set (0.001 sec)
+
+
+    c.      MariaDB [my_test_db]> select * from subjects
+                -> WHERE visible = 1
+                -> ORDER BY position ASC;
+            +----+-------------------+----------+---------+
+            | id | menu_name         | position | visible |
+            +----+-------------------+----------+---------+
+            |  1 | About Widget Corp |        1 |       1 |
+            |  2 | Products          |        2 |       1 |
+            |  3 | Services          |        3 |       1 |
+            +----+-------------------+----------+---------+
+            3 rows in set (0.002 sec)
+
+    d.      MariaDB [my_test_db]> select * from subjects
+                -> WHERE visible = 1
+                -> ORDER BY position DESC;
+            +----+-------------------+----------+---------+
+            | id | menu_name         | position | visible |
+            +----+-------------------+----------+---------+
+            |  3 | Services          |        3 |       1 |
+            |  2 | Products          |        2 |       1 |
+            |  1 | About Widget Corp |        1 |       1 |
+            +----+-------------------+----------+---------+
+            3 rows in set (0.001 sec)
+
+    e.      MariaDB [my_test_db]> select id,menu_name from subjects
+                -> WHERE visible = 1
+                -> ORDER BY position DESC;
+            +----+-------------------+
+            | id | menu_name         |
+            +----+-------------------+
+            |  3 | Services          |
+            |  2 | Products          |
+            |  1 | About Widget Corp |
+            +----+-------------------+
+            3 rows in set (0.001 sec)
+
+
+14. UPDATE data:
+
+        MariaDB [my_test_db]> UPDATE subjects SET visible=1 WHERE id=4;
+        Query OK, 1 row affected (0.006 sec)
+        Rows matched: 1  Changed: 1  Warnings: 0
+        
+15. Read the table data again:
+
+        MariaDB [my_test_db]> UPDATE subjects SET visible=1 WHERE id=4;
+        Query OK, 0 rows affected (0.001 sec)
+        Rows matched: 1  Changed: 0  Warnings: 0
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        |  2 | Products          |        1 |       1 |
+        |  3 | Services          |        3 |       1 |
+        |  4 | Misc              |        4 |       1 |
+        +----+-------------------+----------+---------+
+        4 rows in set (0.000 sec)
+
+16. DELETE a row from the table:
+
+        MariaDB [my_test_db]> DELETE FROM subjects WHERE id=4;
+        Query OK, 1 row affected (0.003 sec)
+        
+17. Read the table data again:        
+
+        MariaDB [my_test_db]> select * from subjects;
+        +----+-------------------+----------+---------+
+        | id | menu_name         | position | visible |
+        +----+-------------------+----------+---------+
+        |  1 | About Widget Corp |        1 |       1 |
+        |  2 | Products          |        1 |       1 |
+        |  3 | Services          |        3 |       1 |
+        +----+-------------------+----------+---------+
+        3 rows in set (0.001 sec)
+
+
+18. Exit MySQL:
+
+        MariaDB [my_test_db]> quit
+        Bye
+
+
+
+
