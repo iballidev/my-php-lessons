@@ -2,6 +2,22 @@
 <?php require_once("./includes/functions.php"); ?>
 <?php include("./includes/header.php"); ?>
 
+<?php
+
+if (isset($_GET["subj"])) {
+    $selected_subj = $_GET["subj"];
+    $selected_page = "";
+} elseif (isset($_GET["page"])) {
+    $selected_page = $_GET["page"];
+    $selected_subj = "";
+} else {
+    $selected_subj = "d";
+    $selected_page = "ww";
+}
+
+
+?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-2">
@@ -15,14 +31,15 @@
                     // 4. Use returned data
                     while ($subject = mysqli_fetch_array($subject_set)) {
                         echo "<li>";
-                        echo "  <span>{$subject['menu_name']}</span>";
+                        echo "<a href=\"index.php?subj=" . $subject["id"] . "\">{$subject['menu_name']}</a>";
                         echo "<ul>";
 
                         // 3. Perform database query
                         $page_set = get_all_pages($subject['id'], $connection);
 
                         while ($page = mysqli_fetch_array($page_set)) {
-                            echo "<li>{$page['menu_name']}</li>";
+                            echo "<li><a href=\"index.php?page=" . $page['subject_id'] . "\">{$page['menu_name']}</a>
+                            </li>";
                         }
 
                         echo "</ul>";
@@ -36,7 +53,15 @@
         <div class="col-10">
             <main>
                 <!-- -->
-                <h2>Content area </h2>
+                <h2>Content area 
+                    <?php
+                    echo $selected_subj;
+                    ?></h2>
+                <p>
+                    <?php
+                    echo $selected_page;
+                    ?>
+                </p>
             </main>
         </div>
     </div>
