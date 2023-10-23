@@ -11,9 +11,13 @@ if (isset($_GET["subj"])) {
     $selected_page = $_GET["page"];
     $selected_subj = "";
 } else {
-    $selected_subj = "d";
-    $selected_page = "ww";
+    $selected_subj = "";
+    $selected_page = "";
 }
+
+echo $selected_subj;
+
+$selected_subject = get_subject_by_id($selected_subj)
 
 
 ?>
@@ -71,7 +75,8 @@ if (isset($_GET["subj"])) {
                 <!-- -->
                 <h2>Content area
                     <?php
-                    echo $selected_subj;
+                    // echo $selected_subj;
+                   echo $selected_subject["menu_name"]
                     ?></h2>
                 <p>
                     <?php

@@ -28,3 +28,25 @@ function get_all_pages($subject_id, $connection)
     confirm_query($page_set, $connection);
     return $page_set;
 }
+
+function get_subject_by_id($subject_id)
+{
+    global $connection;
+
+    $query = "SELECT * ";
+    $query .= "FROM subjects ";
+    $query .= "WHERE id=" . $subject_id . " ";
+    $query .= "LIMIT 1";
+
+
+    echo  "{$query}";
+    $result_set = mysqli_query($connection, $query);
+    confirm_query($result_set, $connection);
+    // REMEMBER:
+    // if no row are returned, fetch_array will return false
+    if ($subject = mysqli_fetch_array($result_set)) {
+        return $subject;
+    }
+    return NULL;
+}
+
