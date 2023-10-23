@@ -1,0 +1,16 @@
+/* minimum media query */
+/* maximum media query */
+/* maximum and minimum query */
+/* tranform effects */
+/* transition effects */
+/* form control appearance */
+/* 'before' pseudo element style */
+/* 'after' pseudo element style */
+.sidebar {
+  position: fixed;
+  background-color: #a81f07;
+  height: 100%;
+  width: 250px;
+}
+
+/*# sourceMappingURL=main.css.map */
