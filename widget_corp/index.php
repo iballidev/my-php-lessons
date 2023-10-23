@@ -31,14 +31,14 @@ if (isset($_GET["subj"])) {
                     // 4. Use returned data
                     while ($subject = mysqli_fetch_array($subject_set)) {
                         echo "<li>";
-                        echo "<a href=\"index.php?subj=" . $subject["id"] . "\">{$subject['menu_name']}</a>";
+                        echo "<a href=\"index.php?subj=" . urlencode($subject["id"]) . "\">{$subject['menu_name']}</a>";
                         echo "<ul>";
 
                         // 3. Perform database query
                         $page_set = get_all_pages($subject['id'], $connection);
 
                         while ($page = mysqli_fetch_array($page_set)) {
-                            echo "<li><a href=\"index.php?page=" . $page['subject_id'] . "\">{$page['menu_name']}</a>
+                            echo "<li><a href=\"index.php?page=" . urlencode($page['subject_id']) . "\">{$page['menu_name']}</a>
                             </li>";
                         }
 
@@ -53,7 +53,7 @@ if (isset($_GET["subj"])) {
         <div class="col-10">
             <main>
                 <!-- -->
-                <h2>Content area 
+                <h2>Content area
                     <?php
                     echo $selected_subj;
                     ?></h2>
