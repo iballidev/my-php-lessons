@@ -31,15 +31,31 @@ if (isset($_GET["subj"])) {
                     // 4. Use returned data
                     while ($subject = mysqli_fetch_array($subject_set)) {
                         echo "<li>";
-                        echo "<a href=\"index.php?subj=" . urlencode($subject["id"]) . "\">{$subject['menu_name']}</a>";
+                        // echo "<a href=\"index.php?subj=" . urlencode($subject["id"]) . "\">{$subject['menu_name']}</a>";
+                        echo "<a href=\"index.php?subj=" . urlencode($subject["id"]) . "\"";
+
+                        if ($subject["id"] == $selected_subj) {
+                            echo " class=\"fw-bold\"";
+                        }
+
+                        echo ">{$subject['menu_name']}</a>";
                         echo "<ul>";
 
                         // 3. Perform database query
                         $page_set = get_all_pages($subject['id'], $connection);
 
                         while ($page = mysqli_fetch_array($page_set)) {
-                            echo "<li><a href=\"index.php?page=" . urlencode($page['subject_id']) . "\">{$page['menu_name']}</a>
-                            </li>";
+                            echo "<li>";
+
+                            echo "<a href=\"index.php?page=" . urlencode($page['id']) . "\" ";
+
+                            if ($page["id"] == $selected_page) {
+                                echo " class=\"fw-bold\"";
+                            }
+
+                            echo ">{$page['menu_name']}</a>";
+
+                            echo "</li>";
                         }
 
                         echo "</ul>";
