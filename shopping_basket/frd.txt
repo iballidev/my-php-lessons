@@ -1,0 +1,30 @@
+Shopping App
+    ||
+    ||
+Authentication *Login
+               *Register
+    ||
+    ||
+    ||
+    ||
+User  ===>   * Products
+||           * Shopping cart
+||                ||   ||
+||                ||   *CRUD Item
+||                 * Checkout
+||           * Orders
+||                ||
+||                ||   
+||                 *CRUD Item
+||          
+||        
+Admin  ===>    * Products
+                    ||
+                        * CRUD Product
+                    ||
+                        * Product categories
+                                ||
+                                * Men
+                                * Women
+                                * Boys
+                                * Girls
