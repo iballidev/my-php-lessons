@@ -1,2 +1,18 @@
 @use "./_components";
 @use "./_partials";
+
+.list-style-none {
+    li {
+        list-style: none;
+    }
+}
+
+.rating{
+    i{
+        color: #ffc107;
+    }
+}
+
+.text-decoration-none{
+    text-decoration: none;
+}

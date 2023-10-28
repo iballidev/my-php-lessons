@@ -5,6 +5,15 @@
   margin-inline: auto;
 }
 
+.prod-item-card {
+  font-size: 0.9rem;
+}
+.prod-item-card .title {
+  height: 40px;
+  line-height: 20px;
+  overflow: hidden;
+}
+
 /* // https://piccalil.li/blog/a-modern-css-reset */
 /* Box sizing rules */
 *,
@@ -73,5 +82,16 @@ svg {
 /* form control appearance */
 /* 'before' pseudo element style */
 /* 'after' pseudo element style */
+.list-style-none li {
+  list-style: none;
+}
+
+.rating i {
+  color: #ffc107;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=main.css.map */
