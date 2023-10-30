@@ -39,7 +39,7 @@
                                         echo "<img class=\"card-img-top\" src=\"{$book["image"]}\" alt=\"\">";
                                     echo "</div>";
                                     echo "<div class=\"card-body\">";
-                                        echo "<a href=\"./book-details.php?book_id={$book["id"]}\" class=\"text-decoration-none\">";
+                                        echo "<a href=\"./book-details.php?book_id=" . urlencode($book["id"]) . "\" class=\"text-decoration-none\">";
                                             echo "<div class=\"title\">";
                                                 echo "{$book['title']}";
                                             echo "</div>";

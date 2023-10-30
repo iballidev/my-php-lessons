@@ -1,0 +1,91 @@
+:root {
+  /* COLORS */
+  --color-primary: #00034b;
+  --color-primary-50: rgba(0, 3, 75, .4);
+  --color-primary-100: hsl(238, 100%, 10%);
+  --color-primary-500: hsl(238, 100%, 0%);
+  --color-secondary: #ff0099;
+  --color-secondary-100: #ff9abb;
+  --color-danger: #dc3545;
+  --color-text: #000000;
+  --color-white: #ffffff;
+  --color-white-100: hsl(0, 0%, 80%);
+  --color-light: #e4e4e4;
+  --color-light-500: #afafaf;
+  --color-light-400: rgba(2, 2, 2, 0.175);
+  --color-success-200: rgb(25, 135, 40);
+  --color-success-400: rgb(25, 135, 84);
+
+  /* TYPOGRAPHY */
+  --ff-primary: "Poppins", sans-serif;
+  --ff-body: var(--ff-primary);
+
+  // --fs-body: 24px;
+
+  --fs-hero-title: 2.5rem; //40px;
+  // --fs-section-title: 2.13em; // 34px
+  --fs-section-title: 3.75em; // 34px
+  --fs-nav: 1.13rem; //18px;
+  --fs-50: 0.88rem; //14px;
+  --fs-100: 1.13rem; //18px;
+  --fs-200: 1.25rem; //20px;
+  --fs-250: 1.56rem; //25px;
+  --fs-300: 1.88rem; //30px;
+  --fs-400: 2.5rem; //40px;
+  --fs-450: 2.81rem; //45px;
+  --fs-600: 3.75rem; //60px;
+
+  /* SIZES */
+  --size-50: 1.88em; //30px;
+  --size-100: 2.63em; //42px;
+  --size-250: 3.81em; //61px;
+  --size-300: 4.88em; //78px;
+  --size-500: 6.25em; //100px;
+
+  /* FONT WEIGHT */
+  --fw-lighter: 100;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 600;
+  --fw-bolder: 700;
+  // --fw-regular: 600;
+  // --fw-semi-bold: 700;
+  // --fw-bold: 900;
+
+  /* LINE HEIGHT*/
+  --lh-100: 40px;
+  --lh-150: 50px;
+  --lh-200: 60px;
+  --lh-section-title: 65px;
+
+  --skew-wave-top-margin: -6.8em;
+}
+@media (max-width: 50em) {
+  :root {
+    /* TYPOGRAPHY */
+    --fs-200: 1.06rem; //17px;
+    --fs-250: 1.13rem; //20px;
+    // --fs-300: 1.56rem; //25px;
+    --fs-300: 1.38rem; //22px;
+    --fs-450: 1.56rem; //25px;
+    --fs-600: 2.5rem; //40px;
+
+    /* SIZES */
+    --fs-hero-title: 1.56rem; //25px;
+    --fs-section-title: 1.5em;
+    line-height: 35px;
+
+    --size-50: 1em; //16px;
+    --size-100: 1.38em; //22px;
+    --size-250: 2.5em; //40px;
+    --size-300: 3.44em; //55px;
+    --size-500: 5em; //80px;
+
+    /* LINE HEIGHT*/
+    --lh-section-title: 30px;
+    --lh-200: 35px;
+    --lh-150: 32px;
+    --lh-100: 28px;
+  }
+}
