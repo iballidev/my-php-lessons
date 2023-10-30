@@ -22,9 +22,21 @@ if (!$result) {
 // print_r($result);
 $book;
 if ($book_set = mysqli_fetch_array($result)) {
-    // print_r($book_set);
     $book = $book_set;
 }
+
+/* 
+$amount = 4533.44;
+$nf = new NumberFormatter("en_US", NumberFormatter::CURRENCY);
+$usd = $nf->formatCurrency($amount, "USD");
+echo $usd;
+*/
+/**
+ * ISSUE: Fatal error: Uncaught Error: Class 'NumberFormatter' not found
+ * SOLUTION: I uncommented "extension=intl" line in php.ini file to install 'intl' extension for NumberFormatter to work.
+ * Source: https://mazer.dev/en/php/posts/laravel-php-class-numberformatter-not-found/#google_vignette
+ */
+
 ?>
 
 
@@ -54,9 +66,20 @@ if ($book_set = mysqli_fetch_array($result)) {
                     <div class="price fs-250 ">
                         <?php
                         if ($book['discount_price']) {
-                            echo $book['discount_price'];
+
+
+                            // $amount = $book['discount_price'];
+                            // $usd = "$" . number_format($amount, 2, ".", ",");
+                            // echo $usd;
+
+                            $amount = $book['discount_price'];;
+                            $nf = new NumberFormatter("en_US", NumberFormatter::CURRENCY);
+                            $usd = $nf->formatCurrency($amount, "USD");
+                            echo $usd;
                         } else {
-                            echo $book['sale_price'];
+                            $amount = $book['sale_price'];
+                            $usd = "$" . number_format($amount, 2, ".", ",");
+                            echo $usd;
                         }
                         ?>
                     </div>

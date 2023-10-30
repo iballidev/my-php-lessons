@@ -49,7 +49,14 @@
                                         echo "</div>";
                                         echo "<div class=\"price\">";
                                             echo "<span class=\"discount-price fs-5\">";
-                                                echo "$book[discount_price]";
+                                                // $amount = $book['discount_price'];
+                                                // $usd = "$" . number_format($amount, 2, ".", ",");
+                                                // echo $usd;
+
+                                                $amount = $book['discount_price'];;
+                                                $nf = new NumberFormatter("en_US", NumberFormatter::CURRENCY);
+                                                $usd = $nf->formatCurrency($amount, "USD");
+                                                echo $usd;
                                                 echo "</span>";
                                             // echo "<span class=\"sale-price text-muted fs-6\">{$book['sale_price']}</span>";
                                         echo "</div>";                                        
