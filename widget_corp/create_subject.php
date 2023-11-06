@@ -5,7 +5,11 @@
 <?php
 // Form validation
 $errors = array();
+$fields = array("menu_name","position","visible");
 
+// for($i=0; $i<$fields; $i++){
+
+// }
 if (!isset($_POST["menu_name"]) || empty($_POST['menu_name'])) {
     $errors[] = 'menu_name';
 }

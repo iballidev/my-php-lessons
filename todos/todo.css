@@ -1,0 +1,25 @@
+.main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.todo-list .list-group-item{
+    margin-bottom: .5em;
+    &:first-child{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    &:last-child{
+        margin-bottom: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+.todo-list .list-group-item.done{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.todo-list .list-group-item.done > .body {
+    text-decoration: line-through;
+}

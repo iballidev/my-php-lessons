@@ -5,9 +5,11 @@
 function mysqli_prep($value)
 {
     $new_enough_php = function_exists("mysqli_real_escape_string");
+    echo $new_enough_php;
 
     if ($new_enough_php) {
         $value = addslashes($value);
+        echo $value;
         return $value;
     }
 }
@@ -32,13 +34,11 @@ function get_all_subjects()
 {
     global $connection;
 
-
     $query =  "SELECT * FROM subjects ORDER BY position ASC";
     $subject_set = mysqli_query($connection, $query);
     confirm_query($subject_set, $connection);
     return  $subject_set;
 }
-
 
 function get_all_pages($subject_id, $connection)
 {
